@@ -1,5 +1,4 @@
 #!/bin/bash -x
 
-pwd
 ls -ltr
-ls -ltr ../
+python ./xi_iot_get_projects.py
