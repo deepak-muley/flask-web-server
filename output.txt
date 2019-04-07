@@ -1,5 +1,314 @@
-➜  flask-web-server git:(master) ✗ python3 xi_iot_get_projects.py
-'name: api-demo-project'
-'  id: 763cdddd-a147-4f5a-9641-d518adaacf0b'
-("  edgeIds: ['7b2af858-6c3c-4526-8aef-f95914092641', "
+➜  flask-web-server git:(master) ✗ python3 xi_iot_sdk.py
+'Project name: api-demo-project'
+'--id: 763cdddd-a147-4f5a-9641-d518adaacf0b'
+("--edgeIds: ['7b2af858-6c3c-4526-8aef-f95914092641', "
  "'c8a94d42-bbc2-4c30-bcf6-6d5d555c5537']")
+
+
+'Edge name: deepakm-ahv-master-1-1'
+'--id: 7b2af858-6c3c-4526-8aef-f95914092641'
+
+
+'Edge name: deepakm-ahv-master-2-1'
+'--id: c8a94d42-bbc2-4c30-bcf6-6d5d555c5537'
+
+
+'Application with Id 7e4d2273-c58b-4dbd-814f-9c369ce0e90a created.'
+
+
+'Application with Id e3013689-6684-4b0b-a61e-4b22eee5c2f6 created.'
+
+
+'Get Application Info with Id 7e4d2273-c58b-4dbd-814f-9c369ce0e90a'
+("Application Details: {'id': '7e4d2273-c58b-4dbd-814f-9c369ce0e90a', "
+ "'version': 1554680691772398800, 'tenantId': 'tenant-id-deepak', 'createdAt': "
+ "'2019-04-07T23:44:51.772399Z', 'updatedAt': '2019-04-07T23:44:51.772399Z', "
+ "'name': 'flask-web-server', 'description': 'test api created app', "
+ "'edgeIds': ['7b2af858-6c3c-4526-8aef-f95914092641', "
+ "'c8a94d42-bbc2-4c30-bcf6-6d5d555c5537'], 'projectId': "
+ "'763cdddd-a147-4f5a-9641-d518adaacf0b', 'edgeSelectors': None, "
+ "'appManifest': 'apiVersion: apps/v1\\nkind: Deployment\\nmetadata:\\n  name: "
+ 'flask-web-server\\n  labels:\\n    app: flask-web-server\\nspec:\\n  '
+ 'selector:\\n      matchLabels:\\n        app: flask-web-server\\n  replicas: '
+ '1\\n  template:\\n    metadata:\\n      name: flask-web-server\\n      '
+ 'labels:\\n        app: flask-web-server\\n    spec:\\n        '
+ 'containers:\\n        - image: '
+ 'deepakmuley/flask-web-server:latest\\n          name: '
+ 'flask-web-server\\n          ports:\\n            - containerPort: '
+ '5000\\n              hostPort: 5000\\n---\\nkind: Service\\napiVersion: '
+ 'v1\\nmetadata:\\n  name: flask-web-server-svc\\nspec:\\n  selector:\\n    '
+ 'app: flask-web-server\\n  ports:\\n  - protocol: TCP\\n    name: '
+ "flask-web-server\\n    port: 5000\\n    targetPort: 5000\\n'}")
+
+
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+'app status: []'
+("Application status: {'version': 1554680710490649000, 'tenantId': "
+ "'tenant-id-deepak', 'edgeId': 'c8a94d42-bbc2-4c30-bcf6-6d5d555c5537', "
+ "'applicationId': '7e4d2273-c58b-4dbd-814f-9c369ce0e90a', 'appStatus': "
+ "{'podStatusList': [], 'podMetricsList': []}, 'createdAt': "
+ "'2019-04-07T23:45:10.490649Z', 'updatedAt': '2019-04-07T23:45:10.490649Z'}")
+
+
+("Application status: {'version': 1554680710498624500, 'tenantId': "
+ "'tenant-id-deepak', 'edgeId': 'c8a94d42-bbc2-4c30-bcf6-6d5d555c5537', "
+ "'applicationId': 'e3013689-6684-4b0b-a61e-4b22eee5c2f6', 'appStatus': "
+ "{'podStatusList': [{'metadata': {'creationTimestamp': "
+ "'2019-04-07T23:44:53Z', 'generateName': 'flask-web-server-bd4467d9f-', "
+ "'labels': {'app': 'flask-web-server', 'pod-template-hash': '680023859', "
+ "'sherlock-app-id': 'e3013689-6684-4b0b-a61e-4b22eee5c2f6', "
+ "'sherlock-netpol-allow-all': 'true'}, 'name': "
+ "'flask-web-server-bd4467d9f-qdgpp', 'namespace': "
+ "'project-763cdddd-a147-4f5a-9641-d518adaacf0b', 'ownerReferences': "
+ "[{'apiVersion': 'apps/v1', 'blockOwnerDeletion': True, 'controller': True, "
+ "'kind': 'ReplicaSet', 'name': 'flask-web-server-bd4467d9f', 'uid': "
+ "'245ec997-598f-11e9-888a-506b8dffa8fe'}], 'resourceVersion': '919064', "
+ "'selfLink': "
+ "'/api/v1/namespaces/project-763cdddd-a147-4f5a-9641-d518adaacf0b/pods/flask-web-server-bd4467d9f-qdgpp', "
+ "'uid': '245f1828-598f-11e9-888a-506b8dffa8fe'}, 'spec': {'containers': "
+ "[{'image': 'deepakmuley/flask-web-server:latest', 'imagePullPolicy': "
+ "'Always', 'name': 'flask-web-server', 'ports': [{'containerPort': 5000, "
+ "'hostPort': 5000, 'protocol': 'TCP'}], 'resources': {}, "
+ "'terminationMessagePath': '/dev/termination-log', "
+ "'terminationMessagePolicy': 'File', 'volumeMounts': [{'mountPath': "
+ "'/var/run/secrets/kubernetes.io/serviceaccount', 'name': "
+ "'default-token-7rsrz', 'readOnly': True}]}], 'dnsPolicy': 'ClusterFirst', "
+ "'nodeName': 'deepakm-ahv-master-2-1-1', 'priority': 10000, 'restartPolicy': "
+ "'Always', 'schedulerName': 'default-scheduler', 'securityContext': {}, "
+ "'serviceAccount': 'default', 'serviceAccountName': 'default', "
+ "'terminationGracePeriodSeconds': 30, 'tolerations': [{'effect': 'NoExecute', "
+ "'key': 'node.kubernetes.io/not-ready', 'operator': 'Exists', "
+ "'tolerationSeconds': 300}, {'effect': 'NoExecute', 'key': "
+ "'node.kubernetes.io/unreachable', 'operator': 'Exists', 'tolerationSeconds': "
+ "300}], 'volumes': [{'name': 'default-token-7rsrz', 'secret': {'defaultMode': "
+ "420, 'secretName': 'default-token-7rsrz'}}]}, 'status': {'conditions': "
+ "[{'lastProbeTime': None, 'lastTransitionTime': '2019-04-07T23:44:53Z', "
+ "'status': 'True', 'type': 'Initialized'}, {'lastProbeTime': None, "
+ "'lastTransitionTime': '2019-04-07T23:44:55Z', 'status': 'True', 'type': "
+ "'Ready'}, {'lastProbeTime': None, 'lastTransitionTime': None, 'status': "
+ "'True', 'type': 'ContainersReady'}, {'lastProbeTime': None, "
+ "'lastTransitionTime': '2019-04-07T23:44:53Z', 'status': 'True', 'type': "
+ "'PodScheduled'}], 'containerStatuses': [{'containerID': "
+ "'docker://11103c24c9c6768ce57309e210fa8268d371faf460c50c2567d8b62d080399b5', "
+ "'image': 'deepakmuley/flask-web-server:latest', 'imageID': "
+ "'docker-pullable://deepakmuley/flask-web-server@sha256:a5e3add6370432b1233d617ac49256356f62e4b72da773342b4a351abf5ab860', "
+ "'lastState': {}, 'name': 'flask-web-server', 'ready': True, 'restartCount': "
+ "0, 'state': {'running': {'startedAt': '2019-04-07T23:44:55Z'}}}], 'hostIP': "
+ "'10.45.27.104', 'phase': 'Running', 'podIP': '10.32.0.29', 'qosClass': "
+ "'BestEffort', 'startTime': '2019-04-07T23:44:53Z'}}], 'podMetricsList': []}, "
+ "'createdAt': '2019-04-07T23:45:10.498624Z', 'updatedAt': "
+ "'2019-04-07T23:45:10.498624Z'}")
+
+
+'Application with Id 7e4d2273-c58b-4dbd-814f-9c369ce0e90a updated.'
+
+
+'Application with Id 7e4d2273-c58b-4dbd-814f-9c369ce0e90a deleted.'
+
+
+'Application with Id e3013689-6684-4b0b-a61e-4b22eee5c2f6 deleted.'
