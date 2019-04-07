@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask-web-server
+  labels:
+    app: flask-web-server
+spec:
+  containers:
+    - image: deepakmuley/flask-web-server:latest
+      name: flask-web-server
+      ports:
+        - containerPort: 5000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: flask-web-server-svc
+spec:
+  selector:
+    app: flask-web-server
+  ports:
+  - protocol: TCP
+    name: flask-web-server
+    port: 5000
+    targetPort: 5000

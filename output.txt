@@ -1,0 +1,5 @@
+➜  flask-web-server git:(master) ✗ python3 xi_iot_get_projects.py
+'name: api-demo-project'
+'  id: 763cdddd-a147-4f5a-9641-d518adaacf0b'
+("  edgeIds: ['7b2af858-6c3c-4526-8aef-f95914092641', "
+ "'c8a94d42-bbc2-4c30-bcf6-6d5d555c5537']")
