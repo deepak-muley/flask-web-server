@@ -7,9 +7,11 @@ import xi_iot_env_constants
 pp = pprint.PrettyPrinter()
 
 class ResourceNotFound(Exception):
-    
     def __init__(self, message):
         self.message = message 
+
+class APIFailed(http.client.HTTPException):
+    pass
 
 class XiIoT:
     def __init__(self):
@@ -22,6 +24,8 @@ class XiIoT:
         headers = { 'content-type': "application/json" }
         self.connection.request("POST","/v1.0/login", payload, headers)
         resp = self.connection.getresponse()
+        if (resp.status != 200):
+            raise APIFailed(resp.status, resp.reason, resp.read())
         resp = json.loads(resp.read())
         self.token = resp['token']
 
@@ -29,6 +33,8 @@ class XiIoT:
         headers = { 'authorization': "Bearer %s" % self.token }
         self.connection.request("GET", "/v1.0/projects", headers=headers)
         resp = self.connection.getresponse()
+        if (resp.status != 200):
+            raise APIFailed(resp.status, resp.reason, resp.read())
         resp = json.loads(resp.read())
         projects = []
         for projectDict in resp['result']:
@@ -39,6 +45,8 @@ class XiIoT:
         headers = { 'authorization': "Bearer %s" % self.token }
         self.connection.request("GET", "/v1.0/applications", headers=headers)
         resp = self.connection.getresponse()
+        if (resp.status != 200):
+            raise APIFailed(resp.status, resp.reason, resp.read())
         resp = json.loads(resp.read())
         apps = []
         for appDict in resp['result']:
@@ -55,6 +63,31 @@ class Project:
         headers = { 'authorization': "Bearer %s" % xiIot.token }
         xiIot.connection.request("POST", "/v1.0/applications", payload, headers)
         resp = xiIot.connection.getresponse()
+        if (resp.status != 200):
+            raise APIFailed(resp.status, resp.reason, resp.read())
+        resp = json.loads(resp.read())
+        pp.pprint(resp)
+        return resp['id']
+
+    def update_application(self, appId, appObject):
+        xiIot = Xi.Resource('xi_iot')
+        payload = json.dumps(appObject.__dict__)
+        headers = { 'authorization': "Bearer %s" % xiIot.token }
+        xiIot.connection.request("PUT", "/v1.0/applications/%s" % appId, payload, headers)
+        resp = xiIot.connection.getresponse()
+        if (resp.status != 200):
+            raise APIFailed(resp.status, resp.reason, resp.read())
+        resp = json.loads(resp.read())
+        pp.pprint(resp)
+        return resp['id']
+
+    def delete_application(self, appId):
+        xiIot = Xi.Resource('xi_iot')
+        headers = { 'authorization': "Bearer %s" % xiIot.token }
+        xiIot.connection.request("DELETE", "/v1.0/applications/%s" % appId, headers=headers)
+        resp = xiIot.connection.getresponse()
+        if (resp.status != 200):
+            raise APIFailed(resp.status, resp.reason, resp.read())
         resp = json.loads(resp.read())
         pp.pprint(resp)
         return resp['id']
@@ -91,15 +124,35 @@ if __name__ == "__main__":
         print("\n")
 
     project = projects[0]
+
+    #Create App
     appDict = {}
     yamlFile = open("./flask-web-server.yaml", "r") 
     appDict['appManifest'] = yamlFile.read()
-    appDict['name'] = "flask-web-server2"
+    appDict['name'] = "flask-web-server4"
     appDict['description'] = "test api created app"
     appDict['projectId'] = project.id
     app = Application(appDict)
     appId = project.create_application(app)
     pp.pprint("Application with Id %s created." % appId)
 
+    #Update App
+    appDict = {}
+    yamlFile = open("./flask-web-server.yaml", "r") 
+    appDict['appManifest'] = yamlFile.read()
+    appDict['name'] = "flask-web-server5"
+    appDict['description'] = "test api created app 5"
+    appDict['projectId'] = project.id
+    app = Application(appDict)
+    appId = project.update_application(appId, app)
+    pp.pprint("Application with Id %s updated." % appId)
+
+    #Delete App
+    appDict = {}
+    appDict['projectId'] = project.id
+    appDict['id'] = appId
+    app = Application(appDict)
+    appId = project.delete_application(appId)
+    pp.pprint("Application with Id %s deleted." % appId)
 
 
