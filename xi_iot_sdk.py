@@ -40,10 +40,22 @@ class XiIoT:
         self.connection.request("GET", "/v1.0/projects", headers=headers)
         resp = self.connection.getresponse()
         resp = json.loads(resp.read())
+        pp.pprint(resp)
         projects = []
         for projectDict in resp['result']:
             projects.append(Project(projectDict))
         return projects
+
+    def get_applications(self):
+        headers = { 'authorization': "Bearer %s" % self.token }
+        self.connection.request("GET", "/v1.0/applications", headers=headers)
+        resp = self.connection.getresponse()
+        resp = json.loads(resp.read())
+        pp.pprint(resp)
+        apps = []
+        for appDict in resp['result']:
+            apps.append(Application(appDict))
+        return apps
 
 class Project:
     def __init__(self, adict):
@@ -53,14 +65,21 @@ class Application:
     def __init__(self, adict):
         self.__dict__.update(adict)
 
-xi_iot = Xi.Resource("xi_iot")
-xi_iot.login(xi_iot_env_constants.userEmail, xi_iot_env_constants.userPwd)
-projects = xi_iot.get_projects()
-for project in projects:
-    pp.pprint("name: %s" % project.name)
-    pp.pprint("  id: %s" % project.id)
-    pp.pprint("  edgeIds: %s" % project.edgeIds)
+if __name__ == "__main__":
+    xi_iot = Xi.Resource("xi_iot")
+    xi_iot.login(xi_iot_env_constants.userEmail, xi_iot_env_constants.userPwd)
+    projects = xi_iot.get_projects()
+    for project in projects:
+        pp.pprint("Project name: %s" % project.name)
+        pp.pprint("--id: %s" % project.id)
+        pp.pprint("--edgeIds: %s" % project.edgeIds)
+        pp.pprint("\n")
 
+    apps = xi_iot.get_applications()
+    for app in apps:
+        pp.pprint("Application name: %s" % app.name)
+        pp.pprint("--id: %s" % app.id)
+        pp.pprint("\n")
 
 
 
