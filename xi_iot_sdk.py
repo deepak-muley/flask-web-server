@@ -66,8 +66,17 @@ class Project:
         if (resp.status != 200):
             raise APIFailed(resp.status, resp.reason, resp.read())
         resp = json.loads(resp.read())
-        pp.pprint(resp)
         return resp['id']
+
+    def get_application(self, appId):
+        xiIot = Xi.Resource('xi_iot')
+        headers = { 'authorization': "Bearer %s" % xiIot.token }
+        xiIot.connection.request("GET", "/v1.0/applications/%s" % appId, headers=headers)
+        resp = xiIot.connection.getresponse()
+        if (resp.status != 200):
+            raise APIFailed(resp.status, resp.reason, resp.read())
+        resp = json.loads(resp.read())
+        return Application(resp)
 
     def update_application(self, appId, appObject):
         xiIot = Xi.Resource('xi_iot')
@@ -78,7 +87,6 @@ class Project:
         if (resp.status != 200):
             raise APIFailed(resp.status, resp.reason, resp.read())
         resp = json.loads(resp.read())
-        pp.pprint(resp)
         return resp['id']
 
     def delete_application(self, appId):
@@ -125,21 +133,28 @@ if __name__ == "__main__":
 
     project = projects[0]
 
+    with open("./flask-web-server.yaml", "r") as yamlFile:
+        yamlData = yamlFile.read()
+
     #Create App
     appDict = {}
-    yamlFile = open("./flask-web-server.yaml", "r") 
-    appDict['appManifest'] = yamlFile.read()
-    appDict['name'] = "flask-web-server4"
+     
+    appDict['appManifest'] = yamlData
+    appDict['name'] = "flask-web-server"
     appDict['description'] = "test api created app"
     appDict['projectId'] = project.id
     app = Application(appDict)
     appId = project.create_application(app)
     pp.pprint("Application with Id %s created." % appId)
 
+    #Get App
+    app = project.get_application(appId)
+    pp.pprint("Get Application Info with Id %s" % appId)
+    pp.pprint("Application Details: %s" % app.__dict__)
+
     #Update App
     appDict = {}
-    yamlFile = open("./flask-web-server.yaml", "r") 
-    appDict['appManifest'] = yamlFile.read()
+    appDict['appManifest'] = yamlData
     appDict['name'] = "flask-web-server5"
     appDict['description'] = "test api created app 5"
     appDict['projectId'] = project.id
